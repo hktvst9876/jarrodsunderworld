@@ -47,24 +47,21 @@ NICHE_V1 = "bbq_outdoor_cooking"
 STORE_NAME_V1 = "smokehousesg"
 FIRST_AD_CHANNEL = "meta"
 
-CLAUDE_REASONING_MODEL = "claude-sonnet-4-6"
-CLAUDE_CHEAP_MODEL = "claude-haiku-4-5-20251001"
+DEEPSEEK_REASONING_MODEL = "deepseek-reasoner"
+DEEPSEEK_CHEAP_MODEL = "deepseek-chat"
 
 # -------------------------------------------------------------------------
 # Brain switchboard. Maps task types -> provider name. Edit ONE row to swap.
-# DECISION-class tasks (decision/narration/scoring/strategy) are LOCKED to
-# providers with supports_decisions=True (currently Claude only). The router
-# in llm/router.py refuses to dispatch them anywhere else.
-# Other task types are free to swap to "openai" (or any registered provider).
+# DECISION-class tasks (decision/narration/scoring/strategy) require a
+# provider with supports_decisions=True. DeepSeekProvider has this enabled.
+# Switch any value to "anthropic" or "openai" to use a different provider.
 # -------------------------------------------------------------------------
 PROVIDER_MAP = {
-    # Locked
-    "decision":       "anthropic",
-    "narration":      "anthropic",
-    "scoring":        "anthropic",
-    "strategy":       "anthropic",
-    # Swappable — change these to "openai" to use GPT for the heavy lifting
-    "creative_text":  "anthropic",
-    "bulk_classify":  "anthropic",
-    "trend_summary":  "anthropic",
+    "decision":       "deepseek",
+    "narration":      "deepseek",
+    "scoring":        "deepseek",
+    "strategy":       "deepseek",
+    "creative_text":  "deepseek",
+    "bulk_classify":  "deepseek",
+    "trend_summary":  "deepseek",
 }

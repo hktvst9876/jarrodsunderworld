@@ -28,6 +28,7 @@ from enum import Enum
 from llm.providers.base import AIProvider
 from llm.providers.anthropic_provider import ClaudeProvider
 from llm.providers.openai_provider import GPTProvider
+from llm.providers.deepseek_provider import DeepSeekProvider
 
 
 class TaskType(str, Enum):
@@ -46,9 +47,7 @@ class TaskType(str, Enum):
 _REGISTRY: dict[str, AIProvider] = {
     "anthropic": ClaudeProvider(),
     "openai": GPTProvider(),
-    # Add more here when you want them:
-    # "google": GeminiProvider(),
-    # "mistral": MistralProvider(),
+    "deepseek": DeepSeekProvider(),
 }
 
 
